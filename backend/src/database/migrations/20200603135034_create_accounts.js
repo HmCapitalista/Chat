@@ -5,7 +5,7 @@ exports.up = function(knex) {
 
         table.string('name').notNullable();
         table.string('password').notNullable();
-        table.bool('online').notNullable();
+        table.boolean('online').notNullable();
 
     });
 

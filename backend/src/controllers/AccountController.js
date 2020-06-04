@@ -18,7 +18,7 @@ module.exports = {
 
         const accountID = await connection('accounts').where('name', name).first().select('id');
 
-        if(accountPassword !== password) {
+        if(accountPassword.password !== password) {
             return response.status(400).json({ error: "Password is wrong" });
         }
 
@@ -54,12 +54,20 @@ module.exports = {
     async registerOAC(request, response) {
         const { userID, conversationID } = request.body;
 
-        await connection('registredUsers').insert({
-            userID,
-            conversationID,
-        });
+        try {
+            await connection('registredUsers').where('userID', userID);
 
-        return response.json({ added: true });
+            return response.status(400).json({ error: "user is alredy in conversation" });
+
+        }catch(err){
+            await connection('registredUsers').insert({
+                userID,
+                conversationID,
+            });
+            return response.json({ added: true });
+        }
+
+        
 
     }
 

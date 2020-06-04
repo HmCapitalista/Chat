@@ -16,3 +16,6 @@ const io = socket(server);
 
 console.log(`Server is running in port: ${String(port)}`)
 server.listen(port);
+
+module.exports = io;
+require('./connection/socketIO/events');
