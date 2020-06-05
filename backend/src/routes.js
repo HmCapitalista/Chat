@@ -17,6 +17,8 @@ routes.post('/createAccounts', AccountControllers.create);
 
 routes.post('/enterAccount', AccountControllers.enter);
 
+routes.post('/enterByID', AccountControllers.enterByID);
+
 routes.post('/searchAccounts', AccountControllers.search);
 
 routes.post('/registerOAC', AccountControllers.registerOAC);

@@ -26,6 +26,25 @@ module.exports = {
 
     },
 
+    async enterByID(request, response) {
+        const { accountID } = request.body;
+
+        const resp = await connection('accounts').where('id', accountID).select('id');
+
+        try {
+            if(resp[0].id === String(accountID)) {
+                return response.json({ auth: true, resp });
+
+            }else {
+                return response.json({ auth: false });
+
+            }
+        }catch(err) {
+            return response.json({ auth: false });
+        }
+
+    },
+
     async create(request, response) {
         const { name, password } = request.body;
 
