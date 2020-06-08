@@ -1,17 +1,199 @@
 body {
-    background-color: rgba(236,247,0,0.23);
+    background: #383838;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#042f4a', endColorstr='#042f4a', GradientType=1 );
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
         sans-serif;
-    color: rgba(68, 68, 68, 0.979);
+    color: rgba(125, 236, 255, 87);
 }
 
 .LoginPage {
     width: 100%;
-    max-width: 1120px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.LoginHeader {
+    width: 50%;
+}
+
+.AppName {
+    align-self: flex-start;
+    text-align: center;
+    font-size: 30px;
+    transform: rotate(344deg);
+    margin-top: 20px;
+}
+
+.LoginForm {
+    margin-top: 10%;
+    margin-right: 30%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.LoginTextForm {
+    font-size: 20px;
+    margin-left: 30px;
+}
+
+.LoginInputs {
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.LoginInput {
+    outline: 0;
+    width: 310px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
+    background: none;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    border-color: #49bff5;
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #06eefa;
+    transition: border-color 0.5s;
+}
+
+.LoginInput:focus {
+    border-color: #c3fcff;
+}
+
+.LoginInputPlaceholder {
+    font-size: 17px;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #43d2d9;
+}
+
+.LoginButton {
+    width: 340px;
+    height: 40px;
+    margin-top: 40px;
+    background: none;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1;
+    border-color: #1d87de;
+    color: #4fa0f0;
+    font-size: 20px;
+    cursor: pointer;
+    transition-property: color border background-color width;
+    transition-duration: 0.1s;
+    outline: 0;
+}
+
+.LoginButton:hover {
+    background-color: #43d2d9;
+    border: none;
+    color: white;
+    transition-property: color border background-color;
+    transition-duration: 0.5s;
+}
+
+.LoginButton:Active {
+    transition: width 0.2s;
+    width: 325px;
+}
+
+.FormEnjoy {
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+.LoginColumn {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+}
+
+.MemeTags {
+    margin-top: 10px;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.Deg19 {
+    transform: rotate(19deg);
+    color: #77effc;
+    font-size: 16px;
+}
+
+.Deg331 {
+    transform: rotate(331deg);
+    color: #77effc;
+    font-size: 16px;
+}
+
+.Deg300 {
+    transform: rotate(300deg);
+    color: #77effc;
+    font-size: 16px;
+}
+
+#JTB {
+    margin-bottom: 10px;
+    margin-left: 100px;
+}
+
+#TTW {
+    margin-bottom: 10px;
+    margin-right: 150px;
+}
+
+.LOL {
+    margin-right: 170px;
+    margin-bottom: -10px;
+}
+
+#TBA {
+    margin-bottom: 65px;
+    margin-left: 100px;
+}
+
+#SWT {
+    margin-right: 200px;
+    margin-top: 30px;
+}
+
+#TMA {
+    margin-left: 150px;
+}
+
+#IHT {
+    margin-right: 100px;
+    margin-bottom: 50px;
+}
+
+#GTO {
+    margin-left: 100px;
+}
+
+#IYS {
+    margin-right: 200px;
+}
+
+#IWC {
+    margin-left: 200px;
+}
+
+.GCF {
+    margin-top: 50px;
+    font-size: 30px;
 }
