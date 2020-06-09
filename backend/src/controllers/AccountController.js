@@ -64,9 +64,14 @@ module.exports = {
     },
 
     async search(request, response) {
-        const accounts = await connection('accounts');
+        const { name } = request.json
+        const accounts = await connection('accounts').where('name', name).first().select('*');
 
-        response.json({ accounts: accounts });
+        if(accounts === null) {
+            return response.json({ error: 'any account is registered with that name' })
+        }
+
+        return response.json({ accounts: accounts });
 
     },
 
