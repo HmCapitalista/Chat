@@ -9,17 +9,17 @@ module.exports = {
         let accountPassword;
 
         try {
-            accountPassword = await connection('accounts').where('name', name).first().select('password');
+            accountPassword = (await connection('accounts').where('name', name).select('password'))[0].password;
 
         }catch(err) {
-            return response.status(400).json({error: "doesn't exist any user with this name"});
+            return response.status(200).json({error: "doesn't exist any user with this name"});
 
         }
 
         const accountID = await connection('accounts').where('name', name).first().select('id');
 
-        if(accountPassword.password !== password) {
-            return response.status(400).json({ error: "Password is wrong" });
+        if(accountPassword !== password) {
+            return response.status(200).json({ error: "Password is wrong" });
         }
 
         return response.json({ accountID });

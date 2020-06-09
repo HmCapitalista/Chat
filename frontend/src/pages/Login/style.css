@@ -65,18 +65,42 @@ body {
     margin-bottom: 20px;
     font-size: 20px;
     color: #06eefa;
-    transition: border-color 0.5s;
+    transition: border-color 0.2s;
 }
 
 .LoginInput:focus {
     border-color: #c3fcff;
 }
 
+.LoginInput#Error {
+    border-color: rgb(253, 41, 41);
+}
+
 .LoginInputPlaceholder {
     font-size: 17px;
+    text-align: center;
     margin-bottom: 5px;
     font-weight: 500;
     color: #43d2d9;
+    transition: color 0.2s;
+}
+
+.LoginInputPlaceholder#Error {
+    color: rgb(253, 41, 41);
+}
+
+.LoginInputPS {
+    font-weight: 400;
+    font-size: 13px;
+    transition: opacity 0.1s;
+}
+
+.LoginInputPS#Active {
+    opacity: 1;
+}
+
+.LoginInputPS#Desactive {
+    opacity: 0;
 }
 
 .LoginButton {
@@ -94,6 +118,19 @@ body {
     transition-property: color border background-color width;
     transition-duration: 0.1s;
     outline: 0;
+}
+
+.LoginButtonLabel {
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.LoginButtonLabel#Active {
+    opacity: 1;
+}
+
+.LoginButtonLabel#Error {
+    opacity: 0;
 }
 
 .LoginButton:hover {
