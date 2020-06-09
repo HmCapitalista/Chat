@@ -74,9 +74,9 @@ export default function Login() {
                 <form className="LoginForm" onSubmit={enter}>
                     <div className="LoginColumn">
                         <div className="LoginInputs">
-                            <label className="LoginInputPlaceholder" id={nameState}>User<label ref={userLabel} className="LoginInputPS" id="Desactive"></label></label>
+                            <label className="LoginInputPlaceholder" id={nameState}>User<i ref={userLabel} className="LoginInputPS" id="Desactive"></i></label>
                             <input className="LoginInput" id={nameState} value={name} onChange={(e) => {setName(e.target.value)}} />
-                            <label className="LoginInputPlaceholder" id={passwordState}>Password<label ref={passwordLabel} className="LoginInputPS" id="Desactive"></label></label> 
+                            <label className="LoginInputPlaceholder" id={passwordState}>Password<i ref={passwordLabel} className="LoginInputPS" id="Desactive"></i></label> 
                             <input type="password" className="LoginInput" id={passwordState} value={password} onChange={(e) => {setPassword(e.target.value)}} />
                         </div>
                         <button className="LoginButton" type="submit"><label onClick={enter} className="LoginButtonLabel" id="Active" ref={enterButton}>Enter</label></button>
