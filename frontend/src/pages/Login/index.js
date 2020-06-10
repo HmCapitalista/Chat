@@ -71,7 +71,7 @@ export default function Login() {
                     setTimeout(() => {
                         conectErrorAnimation(enterButton);
                     }, 200);
-                }, 100);
+                }, 200);
                 console.log(err.request.data);
             }
 
