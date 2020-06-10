@@ -33,10 +33,13 @@ export default function Login() {
     const enter = async (e) => {
         e.preventDefault();
         if(name && password) {
-            setLoad(true);
+            enterButton.current.id = 'Error';
             setTimeout(() => {
-                setIsLoading('Active');
-            }, 200);
+                setLoad(true);
+                setTimeout(() => {
+                    setIsLoading('Active');
+                }, 200);
+            }, 100);
             try{
                 const response = await api.post('/enterAccount', {
                     name,

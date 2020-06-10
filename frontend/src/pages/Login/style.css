@@ -5,6 +5,7 @@ body {
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
         sans-serif;
     color: rgba(125, 236, 255, 87);
+    cursor: default; 
 }
 
 .LoginPage {
@@ -150,7 +151,7 @@ body {
     position: relative;
     bottom: 4px;
     cursor: pointer;
-    transition: opacity 0.1s;
+    transition: opacity 0.2s;
 }
 
 .LoadingImage#Active {
