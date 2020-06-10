@@ -115,7 +115,7 @@ body {
     color: #4fa0f0;
     font-size: 20px;
     cursor: pointer;
-    transition-property: color border background-color width;
+    transition-property: color border-color background-color width;
     transition-duration: 0.1s;
     outline: 0;
 }
@@ -135,15 +135,30 @@ body {
 
 .LoginButton:hover {
     background-color: #43d2d9;
-    border: none;
+    border-color: #43d2d9;
     color: white;
-    transition-property: color border background-color;
+    transition-property: color border-color background-color;
     transition-duration: 0.5s;
 }
 
 .LoginButton:Active {
     transition: width 0.2s;
     width: 325px;
+}
+
+.LoadingImage {
+    position: relative;
+    bottom: 4px;
+    cursor: pointer;
+    transition: opacity 0.1s;
+}
+
+.LoadingImage#Active {
+    opacity: 1;
+}
+
+.LoadingImage#Error {
+    opacity: 0;
 }
 
 .FormEnjoy {

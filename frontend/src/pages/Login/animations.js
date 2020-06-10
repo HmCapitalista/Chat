@@ -1,32 +1,22 @@
 module.exports = {
 
     conectErrorAnimation(enterButton) {
-        enterButton.current.id = 'Error';
+        enterButton.current.id = 'Active';
         setTimeout(() => {
             try {
-                enterButton.current.textContent = 'Verify your conection';
-                setTimeout(() => { 
+                enterButton.current.id = 'Error';
+                setTimeout(() => {
                     try {
-                        enterButton.current.id = 'Active';
+                        enterButton.current.textContent = 'Enter';
                         setTimeout(() => {
                             try {
-                                enterButton.current.id = 'Error';
-                                setTimeout(() => {
-                                    try {
-                                        enterButton.current.textContent = 'Enter';
-                                        setTimeout(() => {
-                                            try {
-                                                enterButton.current.id = 'Active';
-                                            }catch(err) {}
-                                        }, 200);
-                                    }catch(err) {}
-                                }, 170);
+                                enterButton.current.id = 'Active';
                             }catch(err) {}
-                        }, 5000);
-                    }catch(err) {};
-                }, 200);
-            }catch(err) {};
-        }, 170);
+                        }, 200);
+                    }catch(err) {}
+                }, 170);
+            }catch(err) {}
+        }, 5000);
     },
 
     userDontSpecified(input, label) {

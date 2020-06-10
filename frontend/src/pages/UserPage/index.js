@@ -11,12 +11,10 @@ export default function UserPage() {
 
     useEffect(() => {
         auth(accountID, history, 'userPage');
-        localStorage.setItem('accountID', '');
-        history.push('/login');
     }, [accountID, history]);
 
     return (
-        <div>
+        <div onClick={() => {localStorage.setItem('accountID', ''); history.goBack()}}>
             User
         </div>
     );

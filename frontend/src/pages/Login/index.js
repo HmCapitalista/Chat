@@ -7,6 +7,7 @@ import { conectErrorAnimation,
     passwordIsWrong } from './animations';
 
 import './style.css';
+import loadImage from '../../assets/load.gif';
 
 import api from '../../services/api';
 import auth from '../../services/auth';
@@ -26,9 +27,16 @@ export default function Login() {
     const history = useHistory();
     const accountID = String(localStorage.getItem('accountID'));
 
+    const [loading, setLoad] = useState(false);
+    const [isLoading, setIsLoading] = useState('Error')
+
     const enter = async (e) => {
         e.preventDefault();
         if(name && password) {
+            setLoad(true);
+            setTimeout(() => {
+                setIsLoading('Active');
+            }, 200);
             try{
                 const response = await api.post('/enterAccount', {
                     name,
@@ -37,15 +45,30 @@ export default function Login() {
                 
                 if(response.data.error === "doesn't exist any user with this name") {
                     userIsWrong(setNS, userLabel);
+                    setIsLoading('Error');
+                    setTimeout(() => {
+                        setLoad(false);
+                    }, 100);
                 } else if(response.data.error === "Password is wrong") {
                     passwordIsWrong(setPS, passwordLabel);
+                    setIsLoading('Error');
+                    setTimeout(() => {
+                        setLoad(false);
+                    }, 100);
                 }else {
                     localStorage.setItem('accountID', response.data.accountID.id);
                     history.push('/user');
                 }
 
             }catch(err) {
-                conectErrorAnimation(enterButton);
+                setIsLoading('Error');
+                setTimeout(() => {
+                    setLoad(false);
+                    enterButton.current.textContent = "Verify your connection";
+                    setTimeout(() => {
+                        conectErrorAnimation(enterButton);
+                    }, 200);
+                }, 100);
                 console.log(err.request.data);
             }
 
@@ -74,12 +97,19 @@ export default function Login() {
                 <form className="LoginForm" onSubmit={enter}>
                     <div className="LoginColumn">
                         <div className="LoginInputs">
-                            <label className="LoginInputPlaceholder" id={nameState}>User<i ref={userLabel} className="LoginInputPS" id="Desactive"></i></label>
+                            <label className="LoginInputPlaceholder" id={nameState}>Username<i ref={userLabel} className="LoginInputPS" id="Desactive"></i></label>
                             <input className="LoginInput" id={nameState} value={name} onChange={(e) => {setName(e.target.value)}} />
                             <label className="LoginInputPlaceholder" id={passwordState}>Password<i ref={passwordLabel} className="LoginInputPS" id="Desactive"></i></label> 
                             <input type="password" className="LoginInput" id={passwordState} value={password} onChange={(e) => {setPassword(e.target.value)}} />
                         </div>
-                        <button className="LoginButton" type="submit"><label onClick={enter} className="LoginButtonLabel" id="Active" ref={enterButton}>Enter</label></button>
+                        <button className="LoginButton" type="submit">
+                            {loading ?
+                                <img className="LoadingImage" src={loadImage} id={isLoading} alt="loading..." />
+                                :
+                                <label onClick={enter} className="LoginButtonLabel" id="Active" ref={enterButton}>Enter</label>    
+                            }
+                            
+                        </button>
                         <label className="FormEnjoy">*enjoy the private chat</label>
                     </div>
                     <label className="LoginTextForm">Now you are in the ShockWave Chat</label>
