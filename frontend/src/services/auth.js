@@ -26,7 +26,7 @@ const auth = async (accountID, history, local = null) => {
                     if(!response.data.auth) {
                         history.push('/login')
                     }else {
-                        return '';
+                        return response.data.resps;
                     }
                     break;
                 

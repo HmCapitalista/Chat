@@ -10,6 +10,10 @@ module.exports = {
         try{
             conversations = await connection('registredUsers').where('userID', accountID).select('conversationID');
 
+            if(conversations.length === 0) {
+                return response.status(400).json({ error: "You aren't in any conversation" });
+            }
+
         }catch(err) {
             return response.status(400).json({ error: "You aren't in any conversation" });
 

@@ -53,7 +53,7 @@ export default function Login() {
                         setLoad(false);
                     }, 100);
                 } else if(response.data.error === "Password is wrong") {
-                    passwordIsWrong(setPS, passwordLabel);
+                    passwordIsWrong(setPS, passwordLabel);                 
                     setIsLoading('Error');
                     setTimeout(() => {
                         setLoad(false);
@@ -91,6 +91,7 @@ export default function Login() {
 
     useEffect(() => {
         auth(accountID, history, 'login');
+        document.title = "ShockWave Chat";
     }, [accountID, history]);
 
     return (

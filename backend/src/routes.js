@@ -11,8 +11,6 @@ routes.post('/createConversation', ConversationController.createConversation);
 
 routes.post('/getConversation', ConversationController.getAllConversations);
 
-routes.get('/searchAccounts', AccountControllers.search);
-
 routes.post('/createAccounts', AccountControllers.create);
 
 routes.post('/enterAccount', AccountControllers.enter);

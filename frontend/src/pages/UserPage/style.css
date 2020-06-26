@@ -1,0 +1,266 @@
+.UserPage {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 0;
+}
+
+.LoadedChats {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.LoadingPage {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 2s;
+}
+
+#isLoaded {
+    opacity: 0.3;
+}
+
+.Chats {
+    width: 400px;
+    height: 100%;
+    overflow: hidden;
+}
+
+.ChatList::-webkit-scrollbar {
+    width: 5px;
+    background: none;
+}
+
+.ChatList:hover::-webkit-scrollbar-thumb{
+    display: flex;
+}
+
+.ChatList::-webkit-scrollbar-thumb {
+    background-color: rgba(14,75,96,1);
+    display: none;
+    border-radius: 4px;
+}
+
+.ChatList {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: calc(100% - 48px);
+    background-color: rgba(2, 31, 41, 40);
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.TextBox {
+    width: 90%;
+    height: 50px;
+    border-radius: 4px;
+    margin-left: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.TextBox:hover {
+    background-color: rgba(255, 255, 255, 0.253);
+}
+
+.ChatsTitle {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: white;
+}
+
+.ErrorBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+}
+
+.NoConversations {
+    font-size: 20px;
+    margin-bottom: 20px;
+    padding-top: 50%;
+    color: #b2feff;
+}
+
+.SearchForm {
+    width: 96%;
+    height: 40px;
+    background-color: #01292e;
+    border-radius: 4px;
+    border-width: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.SearchForm#second {
+    width: 350px;
+}
+
+.SearchPeopleInput {
+    border-radius: 4px;
+    border-width: 0px;
+    width: 56%;
+    height: 40px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background: none;
+    color: #77effc;
+    font-size: 14px;
+    font-weight: 500;
+    outline: 0;
+}
+
+.SearchPeopleInput::placeholder {
+    color: #77effc;
+    font-weight: 500;
+}
+
+.StartConversationButton {
+    font-size: 15px;
+    width: 150px;
+    height: 90%;
+    margin-right: 5px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    border-color: #0598a8;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 3px;
+    color: #77effc;
+    outline: 0;
+    transition-property: opacity background-color border-color color;
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+
+.StartConversationButton:hover {
+    background-color: #0598a8;
+    border-color: rgba(0, 0, 0, 0);
+    color: white;
+}
+
+.StartConversationButton:active {
+    opacity: 0.5;
+    background-color: #0598a8;
+    border-color: rgba(0, 0, 0, 0);
+    color: white;
+}
+
+.UserHeader {
+    width: calc(100% - 400px);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.Header {
+    width: 100%;
+    height: 55px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border-style: solid;
+    border-width: 0px;
+    border-color: rgba(2, 31, 41, 40);
+    border-bottom-width: 3px;
+}
+
+.ActiveChatTitle {
+    width: 20%;
+    font-size: 20px;
+    color: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+} 
+
+.UserData {
+    width: 100%;
+    height: 45px;
+    background-color: rgba(2, 31, 41, 40);
+    border-width: 0px;
+    border-style: solid;
+    border-top-style: solid;
+    border-top-width: 3px;
+    border-top-color: rgba(1,15,21,0.6);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.UserName {
+    width: 50%;
+    color: #b2feff;
+    font-size: 20px;
+    margin-left: 10%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.UserSettings {
+    width: 37px;
+    height: 36px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-width: 0;
+    outline: 0;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 4px;
+    margin-right: 5%;
+    cursor: pointer;
+}
+
+.UserSettings:hover {
+    background-color: rgba(0,186,254,0.12);
+}
+
+.ChatDisplay {
+    width: 100%;
+    height: calc(100% - 55px);
+}
+
+.NoActiveChatDisplay {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.TextDivNACD {
+    color: #b2feff;
+    font-size: 20px;
+    margin-bottom: 50px;
+}

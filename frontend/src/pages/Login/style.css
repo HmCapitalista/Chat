@@ -1,11 +1,6 @@
-body {
-    background: #383838;
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#042f4a', endColorstr='#042f4a', GradientType=1 );
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-        sans-serif;
-    color: rgba(125, 236, 255, 87);
-    cursor: default; 
+
+#root {
+    height: 100%;
 }
 
 .LoginPage {
@@ -175,11 +170,16 @@ body {
 
 .MemeTags {
     margin-top: 10px;
+    padding: 15px;
+    padding-top: 20px;
     width: 20%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: rgb(1, 25, 39);
+    border-radius: 8px;
+    position: relative;
 }
 
 .Deg19 {
@@ -203,47 +203,57 @@ body {
 #JTB {
     margin-bottom: 10px;
     margin-left: 100px;
+    color: #26b9a1;
 }
 
 #TTW {
     margin-bottom: 10px;
     margin-right: 150px;
+    color: #530777;
 }
 
 .LOL {
     margin-right: 170px;
     margin-bottom: -10px;
+    color: #7e5e06;
 }
 
 #TBA {
     margin-bottom: 65px;
     margin-left: 100px;
+    color: #a00909;
 }
 
 #SWT {
     margin-right: 200px;
     margin-top: 30px;
+    color: #6de709;
 }
 
 #TMA {
     margin-left: 150px;
+    color: #ac0b83;
 }
 
 #IHT {
     margin-right: 100px;
     margin-bottom: 50px;
+    color: #7e5e06;
 }
 
 #GTO {
     margin-left: 100px;
+    color: #a00909;
 }
 
 #IYS {
     margin-right: 200px;
+    color: #26b9a1;
 }
 
 #IWC {
     margin-left: 200px;
+    color: #530777;
 }
 
 .GCF {

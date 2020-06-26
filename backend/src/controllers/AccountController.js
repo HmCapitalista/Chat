@@ -33,7 +33,8 @@ module.exports = {
 
         try {
             if(resp[0].id === String(accountID)) {
-                return response.json({ auth: true, resp });
+                const resps = await connection('accounts').where('id', accountID).select('*');
+                return response.json({ auth: true, resps });
 
             }else {
                 return response.json({ auth: false });
@@ -64,8 +65,8 @@ module.exports = {
     },
 
     async search(request, response) {
-        const { name } = request.json
-        const accounts = await connection('accounts').where('name', name).first().select('*');
+        const { name } = request.body
+        const accounts = await connection('accounts').where('name', name).first().select('id', 'name', 'online');
 
         if(accounts === null) {
             return response.json({ error: 'any account is registered with that name' })
