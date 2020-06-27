@@ -11,7 +11,7 @@ const StyledMenu = withStyles({
         paddingTop: '-5px',
         paddingBottom: '-5px',
         borderRadius: '2px',
-        borderColor: 'rgba(255, 255, 255, 0.082)',
+        borderColor: '#00181c',
         borderWidth: '1px',
         borderStyle: 'solid',
     },
@@ -20,12 +20,8 @@ const StyledMenu = withStyles({
         elevation={0}
         getContentAnchorEl={null}
         anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'center',
-        }}
-        transformOrigin={{
-            vertical: 'top',
-            horizontal: 'center',
+            vertical: 'right',
+            horizontal: 'right',
         }}
         {...props}
     />
