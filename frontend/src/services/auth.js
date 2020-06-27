@@ -36,8 +36,7 @@ const auth = async (accountID, history, local = null) => {
         }
 
     }catch(err) {
-        history.push('/login');
-
+        return;
     }
 
 };

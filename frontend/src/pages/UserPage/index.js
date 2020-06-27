@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { MdSettings } from 'react-icons/md';
 import renderFunctions from './renderFunctions';
 
 import './style.css';
@@ -23,35 +22,155 @@ export default function UserPage() {
     const [conectionError, setCE] = useState(false);
     const [pageID, setPageID] = useState('');
 
+    const [anchorEl, setAnchorEl] = useState(null);
+
+    const [secToReload, setSecToReload] = useState(0);
+
     const { renderChats,
         renderNoChats,
         renderNoActiveChat,
-        renderActiveChat
+        renderActiveChat,
+        renderLoadingPage,
+        renderErrorPage,
+        renderChatPage
     } = renderFunctions;
 
     const auth2 = async () => {
-        let resp = await auth(accountID, history, 'userPage');
+        let lastSec = 10;
+        let lastOfLast = lastSec;
+        setSecToReload(lastSec);
 
-        try {
-            const response = await api.post('/getConversation', {
-                accountID: accountID,
-            });
-            
-            setPageID('isLoaded');
-            console.log(loading);
+        try{
+            let resp = await auth(accountID, history, 'userPage');
+            setUserName(resp[0].name);
 
-            setTimeout(() => {
-                setUserName(resp[0].name);
-                setChats(response.data.groups);
-            }, 2000);
+            try {
+                const response = await api.post('/getConversation', {
+                    accountID: accountID,
+                });
+                
+                setPageID('isLoaded');
 
-        }catch(err) {
-            if(err.response.data !== undefined) {
-                setLoading(false);
-            }else {
-                setCE(true);
+                setTimeout(() => {
+                    setChats(response.data.groups);
+                }, 300);
+
+            }catch(err) {
+                if(err.response.data !== undefined) {
+                    setPageID('isLoaded');
+
+                    setTimeout(() => {
+                        setLoading(false);
+                    }, 300);
+                }else {
+                    setCE(true);
+                    let continueInterval = true;
+
+                    const interval = setInterval(async () => { 
+                        if(continueInterval) {
+                            lastSec -= 1; 
+                            setSecToReload(lastSec);
+                        }
+                        
+                        if(lastSec === 0 && continueInterval) {
+                            continueInterval = false;
+                            try{
+                                let resp = await auth(accountID, history, 'userPage');
+                                setUserName(resp[0].name);
+                    
+                                try {
+                                    const response = await api.post('/getConversation', {
+                                        accountID: accountID,
+                                    });
+                                    
+                                    setPageID('isLoaded');
+                    
+                                    setTimeout(() => {
+                                        setChats(response.data.groups);
+                                    }, 300);
+                                    
+                                    clearInterval(interval);
+        
+                                }catch(err) {
+                                    if(err.response.data !== undefined) {
+                                        setPageID('isLoaded');
+        
+                                        setTimeout(() => {
+                                            setLoading(false);
+                                        }, 300);
+
+                                        clearInterval(interval);
+
+                                    }else {
+                                        lastSec = lastOfLast+10;
+                                        lastOfLast += 10;
+                                        continueInterval = true;
+                                    }
+                                }
+                            }catch(err) {
+                                lastSec = lastOfLast+10;
+                                lastOfLast += 10;
+                                continueInterval = true;
+                            }
+                        }
+        
+                    }, 1000);
+                }
             }
-        }
+        }catch(err) {
+            setCE(true);
+            let continueInterval = true;
+
+            const interval = setInterval(async () => { 
+                if(continueInterval) {
+                    lastSec -= 1; 
+                    setSecToReload(lastSec);
+                }
+                
+                if(lastSec === 0 && continueInterval) {
+                    continueInterval = false;
+                    try{
+                        let resp = await auth(accountID, history, 'userPage');
+                        setUserName(resp[0].name);
+            
+                        try {
+                            const response = await api.post('/getConversation', {
+                                accountID: accountID,
+                            });
+                            
+                            setPageID('isLoaded');
+            
+                            setTimeout(() => {
+                                setChats(response.data.groups);
+                            }, 300);
+                            
+                            clearInterval(interval);
+
+                        }catch(err) {
+                            if(err.response.data !== undefined) {
+                                setPageID('isLoaded');
+
+                                setTimeout(() => {
+                                    setLoading(false);
+                                }, 300);
+
+                                clearInterval(interval);
+
+                            }else {
+                                lastSec = lastOfLast+10;
+                                lastOfLast += 10;
+                                continueInterval = true;
+                            }
+                        }
+                    }catch(err) {
+                        lastSec = lastOfLast+10;
+                        lastOfLast += 10;
+                        continueInterval = true;
+                    }
+                }
+
+            }, 1000);
+        }   
     }
 
     useEffect(() => {
@@ -62,36 +181,12 @@ export default function UserPage() {
     return (
         <div className="UserPage">
             { loading === false ?
-            <div className="LoadedChats">
-                <div className="Chats">
-                    <div className="ChatList">
-                        <div className="TextBox">
-                            <div className="ChatsTitle">Chats</div>
-                        </div>
-                        { chats.length === 0 ? renderNoChats() : chats.map(item => renderChats(item)) }
-                    </div>
-                    <div className="UserData">
-                        <label className="UserName">{userName}</label>
-                        <button className="UserSettings"><MdSettings size="25" color="rgba(163,230,251,1)" /></button>
-                    </div>
-                </div>
-                <div className="UserHeader">
-                    <div className="Header">
-                        <p className="ActiveChatTitle" onClick={() => {localStorage.setItem('accountID', ''); history.push('/')}}>{activeChat}</p>
-                        <div className="SearchForm" id="second">
-                            <input className="SearchPeopleInput" placeholder="Search people" />
-                            <button className="StartConversationButton">Start conversation</button>
-                        </div>
-                    </div>
-                    <div className="ChatDisplay">
-                        { activeChat === 'Search for new people to chat' ? renderNoActiveChat() : renderActiveChat(chats, activeChat, messages) }
-                    </div>
-                </div>
-            </div>
+                renderChatPage(chats, activeChat, messages, renderActiveChat, renderNoActiveChat, renderChats, renderNoChats, userName, history, anchorEl, setAnchorEl)
             :
-            <div id={pageID} className="LoadingPage">
-                <img src={loadImage} alt="loading..." />
-            </div>
+                conectionError ?
+                    renderErrorPage(pageID, loadImage, secToReload)
+                :
+                    renderLoadingPage(pageID, loadImage)
             }
         </div>
     );

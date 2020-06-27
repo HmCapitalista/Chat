@@ -21,14 +21,18 @@
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: opacity 2s;
+    transition: opacity 0.2s;
+}
+
+.ConectionErrorInLoading {
+    font-weight: 500;
 }
 
 #isLoaded {
-    opacity: 0.3;
+    opacity: 0;
 }
 
 .Chats {
@@ -263,4 +267,22 @@
     color: #b2feff;
     font-size: 20px;
     margin-bottom: 50px;
+}
+
+.ExitToLogin {
+    border: none;
+    background: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: red;
+    width: 90%;
+    height: 25px;
+    margin-left: 5%;
+    outline: 0;
+    align-self: center;
+}
+
+.ExitToLogin:hover {
+    background-color: rgba(255, 255, 255, 0.082);
+    border-radius: 2px;
 }
