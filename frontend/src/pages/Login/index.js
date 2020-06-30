@@ -91,6 +91,9 @@ export default function Login() {
 
     useEffect(() => {
         auth(accountID, history, 'login');
+        document.addEventListener('contextmenu', e => {
+            e.preventDefault();
+        });
         document.title = "ShockWave Chat";
     }, [accountID, history]);
 

@@ -11,6 +11,9 @@ export default function Init() {
     const history = useHistory();
 
     useEffect(() => {
+        document.addEventListener('contextmenu', e => {
+            e.preventDefault();
+        });
         auth(accountID, history);
     })
 
